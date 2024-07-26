@@ -7,11 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class AuthorDelete {
+public class BookDelete {
 
 	public static void main(String[] args) {
 		
-		System.out.println("작가삭제예제");
+		System.out.println("book 삭제");
 		
 		// 0. import java.sql.*;
 		Connection conn = null;
@@ -31,18 +31,18 @@ public class AuthorDelete {
 			conn = DriverManager.getConnection(url, "book", "book");
 			
 			
-			// 3. SQL문 준비 / 바인딩 / 실행   ## 중요중요
+			// 3. SQL문 준비 / 바인딩 / 실행 
 			
-			// - sql문 준비 (insert 문을 자바의 문자열로 만든다) ## ; 금지, 띄어쓰기 중요
-			String query = ""; // 줄 예쁘게 쓰려고 선언
-			query += " delete from author ";
-			query += " where author_id = ? ";
+			// - sql문 준비 
+			String query = "";
+			query += " delete from book ";
+			query += " where book_id = ? ";
 			
-			// - 바인딩 -- 데이터 ? 와 데이터를 매칭 시킴, 숫자 중요
+			// - 바인딩 
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, 15); // # (n번째, n) 
+			pstmt.setInt(1, 17);
 			
-			// - 실행 -- 성공하면 1 반환, # 퀴리 날림문 실행
+			// - 실행 
 			int count = pstmt.executeUpdate();
 			
 			

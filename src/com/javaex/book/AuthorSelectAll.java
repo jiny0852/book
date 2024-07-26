@@ -13,7 +13,7 @@ public class AuthorSelectAll {
 
 	public static void main(String[] args) {
 		
-		System.out.println("모든작가리스트예제");
+		System.out.println("book 전체 리스트(책정보 + 작가정보)");
 		
 		
 		List<BookVO> authorList = new ArrayList<BookVO>();

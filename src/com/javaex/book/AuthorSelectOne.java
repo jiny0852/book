@@ -11,7 +11,7 @@ public class AuthorSelectOne {
 
 	public static void main(String[] args) {
 		
-		System.out.println("작가리스트예제");
+		System.out.println("book 1권 정보(책정보+작가정보)");
 		
 		// 0. import java.sql.*;
 		Connection conn = null;

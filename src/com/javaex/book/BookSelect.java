@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class AuthorSelect {
+public class BookSelect {
 
 	public static void main(String[] args) {
 		
-		System.out.println("모든작가리스트예제");
+		System.out.println("book 전체리스트");
 		
 		
-		List<BookVO> authorList = new ArrayList<BookVO>();
+		List<BookVO> bookList = new ArrayList<BookVO>();
 		
 		
 		// 0. import java.sql.*;
@@ -37,17 +37,20 @@ public class AuthorSelect {
 			conn = DriverManager.getConnection(url, "book", "book");
 			
 			
-			// 3. SQL문 준비 / 바인딩 / 실행   ## 중요중요
+			// 3. SQL문 준비 / 바인딩 / 실행   
 			
-			// - sql문 준비 (insert 문을 자바의 문자열로 만든다)
+			// - sql문 준비 
 			String query = ""; 
-			query += " select   author_id, ";
-			query += " 			author_name, ";
-			query += " 			aythor_desc ";
-			query += " from author ";
+			query += " select 	title, ";
+			query += " 			pubs, ";
+			query += " 			pub_date, ";
+			query += " 			author_id ";
+			query += " from book ";
+			query += " where book_id = ? ";
 			
 			// - 바인딩 
 			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "박경리");
 			
 			// - 실행 
 			rs = pstmt.executeQuery(); 

@@ -37,7 +37,7 @@ public class AuthorUpdate {
 			String query = ""; // 줄 예쁘게 쓰려고 선언
 			query += " update author ";
 			query += " set author_name = ? , ";
-			query += " aythor_desc = ? ";
+			query += " author_desc = ? ";
 			query += " where author_id = ? ";
 			
 			// - 바인딩 -- 데이터 ? 와 데이터를 매칭 시킴, 숫자 중요

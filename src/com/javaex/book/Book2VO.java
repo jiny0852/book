@@ -16,15 +16,16 @@ public class Book2VO {
 	public Book2VO() {
 		
 	}
-	public Book2VO(int id, String title, String pubs, String pub_date, int author_id) {
+	public Book2VO(int id, String title, String pubs, String pub_date, int author_id, String name, String desc) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.pubs = pubs;
 		this.pub_date = pub_date;
 		this.author_id = author_id;
+		this.name = name;
+		this.desc = desc;
 	}
-	
 	
 	
 	//메서드 -gs
@@ -59,17 +60,31 @@ public class Book2VO {
 	public void setAuthor_id(int author_id) {
 		this.author_id = author_id;
 	}
-	
-	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
 	
 	
 	//메서드 일반
 	
 	@Override
 	public String toString() {
-		return "BookVO [id=" + id + ", title=" + title + ", pubs=" + pubs + ", pub_date=" + pub_date + ", author_id="
-				+ author_id + "]";
+		return "Book2VO [id=" + id + ", title=" + title + ", pubs=" + pubs + ", pub_date=" + pub_date + ", author_id="
+				+ author_id + ", name=" + name + ", desc=" + desc + "]";
 	}
+	
+	
+	
+	
 	
 	
 	
