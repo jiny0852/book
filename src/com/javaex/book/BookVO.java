@@ -3,7 +3,7 @@ package com.javaex.book;
 public class BookVO {
 
 	//필드
-	private int id;
+	private int bookId;
 	private String title;
 	private String pubs;
 	private String pub_date;
@@ -14,9 +14,9 @@ public class BookVO {
 	public BookVO() {
 		
 	}
-	public BookVO(int id, String title, String pubs, String pub_date, int author_id) {
+	public BookVO(int bookId, String title, String pubs, String pub_date, int author_id) {
 		super();
-		this.id = id;
+		this.bookId = bookId;
 		this.title = title;
 		this.pubs = pubs;
 		this.pub_date = pub_date;
@@ -27,11 +27,11 @@ public class BookVO {
 	
 	//메서드 -gs
 	
-	public int getId() {
-		return id;
+	public int getBookId() {
+		return bookId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
 	}
 	public String getTitle() {
 		return title;
@@ -65,7 +65,7 @@ public class BookVO {
 	
 	@Override
 	public String toString() {
-		return "BookVO [id=" + id + ", title=" + title + ", pubs=" + pubs + ", pub_date=" + pub_date + ", author_id="
+		return "BookVO [bookId=" + bookId + ", title=" + title + ", pubs=" + pubs + ", pub_date=" + pub_date + ", author_id="
 				+ author_id + "]";
 	}
 	

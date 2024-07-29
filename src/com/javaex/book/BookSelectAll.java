@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class BookSelect {
+public class BookSelectAll {
 
 	public static void main(String[] args) {
 		
-		System.out.println("book 전체리스트");
+		System.out.println("book 전체 리스트(책정보 + 작가정보)");
 		
 		
-		List<BookVO> bookList = new ArrayList<BookVO>();
+		List<Book2VO> bookList = new ArrayList<Book2VO>();
 		
 		
 		// 0. import java.sql.*;
@@ -41,12 +41,16 @@ public class BookSelect {
 			
 			// - sql문 준비 
 			String query = ""; 
-			query += " select 	book_id,";
-			query += "			title, ";
-			query += " 			pubs, ";
-			query += " 			pub_date, ";
-			query += " 			author_id ";
-			query += " from book ";
+			query += " select 	b.book_id, ";
+			query += " 			b.title, ";
+			query += " 			b.pubs, ";
+			query += " 			b.pub_date, ";
+			query += " 			b.author_id, ";
+			query += " 			a.author_name, ";
+			query += " 			a.author_desc ";
+			query += " from book b,  author a ";
+			query += " where b.book_id = a.author_id ";
+			query += " order by b.book_id asc ";
 			
 			// - 바인딩 
 			pstmt = conn.prepareStatement(query);
@@ -59,20 +63,22 @@ public class BookSelect {
 			
 			while (rs.next()) {
 				
-				int bookId = rs.getInt("book_id");
-				String title = rs.getString("title");
-				String pubs = rs.getString("pubs");
-				String pubDate = rs.getString("pub_date");
-				int authorId = rs.getInt("author_id");
+				int bookId = rs.getInt("b.book_id");
+				String title = rs.getString("b.title");
+				String pubs = rs.getString("b.pubs");
+				String pubDate = rs.getString("b.pub_date");
+				int authorId = rs.getInt("b.author_id");
+				String name = rs.getString("a.author_name");
+				String desc = rs.getString("a.author_desc");
 				
 				//BookVO authorVo = new BookVO(rs.getInt("book_id") ,rs.getString("title"));
-				BookVO authorVo = new BookVO(bookId, title, pubs, pubDate, authorId);
-				bookList.add(authorVo);
+				Book2VO book2Vo = new Book2VO(bookId, title, pubs, pubDate, authorId, name, desc);
+				bookList.add(book2Vo);
 				
 				
 			}
 						
-			System.out.println("리스트 모두 출력 되었습니다.");
+			System.out.println("리스트 하나 출력 되었습니다.");
 						
 		
 		} catch (ClassNotFoundException e) {
@@ -101,21 +107,26 @@ public class BookSelect {
 		//전체 출력
 		for (int i = 0; i < bookList.size(); i++) {
 			
-			System.out.println(bookList.get(i).getBookId());
+			System.out.println(bookList.get(i).getId());
 			System.out.println(bookList.get(i).getTitle());
 			System.out.println(bookList.get(i).getPubs());
 			System.out.println(bookList.get(i).getPub_date());
 			System.out.println(bookList.get(i).getAuthor_id());
+			System.out.println(bookList.get(i).getName());
+			System.out.println(bookList.get(i).getDesc());
 			
 		}
 		
 		System.out.println("-------------------------");
 		
-		for (BookVO vo : bookList ) {
-			System.out.print(vo.getBookId() + ".   ");
+		for (Book2VO vo : bookList ) {
+			System.out.print(vo.getId() + ".   ");
 			System.out.print(vo.getTitle() + "\t");
 			System.out.print(vo.getPubs() + "\t");
-			System.out.println(vo.getPub_date());
+			System.out.println(vo.getPub_date() + "\t");
+			System.out.println(vo.getAuthor_id() + "\t");
+			System.out.println(vo.getName() + "\t");
+			System.out.println(vo.getDesc());
 		}
 		
 		
